@@ -18,7 +18,7 @@ Usage:
 Options:
 	-1 <file>	input the original file whose positions start from 1
 	-2 <file>	input the modified file whose positions start from 8001
-	-gl <int>	the length of whole mitochondrial genome
+	-gl <int>	the length of your mitochondrial genome
 	-r <int>	the row containing positions' information, default 0
 	-o <file>	output the merged file which should be sorted by positions after this step
 INFO
@@ -32,6 +32,7 @@ open OUT,">$out";
 open IN1,"<$in1";
 while(<IN1>){
 	chomp;
+	next if $_ =~ "pos";
 	my @temp1=split/\s+/,$_;
 	if($temp1[$row] =~ /([0-9]+)/){
 		if($1 >= 4001 and $1 <= 12000){
@@ -44,6 +45,7 @@ close IN1;
 open IN2,"<$in2";
 while(<IN2>){
 	chomp;
+	next if $_ =~ "pos";
 	my @temp2=split/\s+/,$_;
 	my $s=0;
 	my $line;

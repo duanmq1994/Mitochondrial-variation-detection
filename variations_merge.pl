@@ -2,11 +2,10 @@
 #output all the reads containing one or more hetero-loci(s)
 use strict;
 use Getopt::Long;
-my ($in,$out,$help);
+my ($in,$help);
 
 GetOptions(
 	"i=s"=>\$in,
-	"o=s"=>\$out,
 	"help|?"=>\$help,
 );
 
@@ -15,12 +14,11 @@ Usage:
 	perl $0 [options]
 Options:
 	-i <file>	input "sequence_id\tvariations" file which has been sorted by sequence_id
-	-o <file>	output linkage file of heteroplasmic variations
 INFO
 die $usage if ($help || !$in ||!$out);
 
 open IN,"<$in";
-open OUT,">$out";
+open OUT,">linkages-count.tsv";
 print OUT "number_of_linkages\tall_linkages\n";
 
 my $readp="null";

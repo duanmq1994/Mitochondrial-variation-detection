@@ -2,12 +2,10 @@
 #count the base-type and indel-type file together
 use Getopt::Long;
 use strict;
-my($in,$out1,$out2,$out3,$cut,$HF,$glen,$help);
+my($in,$out3,$cut,$HF,$glen,$help);
 GetOptions
 (
 	"i=s"=>\$in,
-	"ob=s"=>\$out1,
-	"oi=s"=>\$out2,
 	"ov=s"=>\$out3,
 	"c=i"=>\$cut,
 	"HF=f"=>\$HF,
@@ -17,17 +15,17 @@ GetOptions
 my $usage=<<INFO;
 Usage:
 	perl $0	[options]
+
+	This script will read the .bam/.sam file and output the base-count.tsv, indel-count.tsv and point-variations.tsv(alternative).
 Options:
-	-i <file>		input .sam/.bam file after alignment and sort
-	-ob	<file>	output base-type count file
-	-oi	<file>	output indel-type count file
+	-i <file>	input .bam/.sam file after sort
 	-c <int>	Phred quality value cutoff of every base, default=20
 	-HF <float>	the threshold value of MAF(minor allele frequency), defalut with no threshold
 	-ov <file>	output the heteroplasmic point variations according to the -HF parament, default no output
 	-g <int>	length of mitochondrial genome
 INFO
 
-die "You lose some parameters!\n" if ($help || !$in || !$out1 ||!$out2|| !$glen);
+die $usage if ($help || !$in || !$glen);
 
 if($in =~ /bam/){
 	open (IN,"samtools view $in |");
@@ -43,8 +41,8 @@ if($out3){
 	die "You should output the heteroplasmic point variations into a file!\n" if $HF;
 }
 
-open OUT1,">$out1";
-open OUT2,">$out2";
+open OUT1,">base-count.tsv";
+open OUT2,">indel-count.tsv";
 open OUT3,">$out3" if $out3;
 
 my%indelcount=();
@@ -167,6 +165,6 @@ for my$indel (@indels){
 }
 
 close IN;
-close OUT2 if $out2;
+close OUT2;
 close OUT1;
 close OUT3 if $out3;

@@ -2,12 +2,11 @@
 #print the heteroplasmic point mutations and indels linkage
 use Getopt::Long;
 use strict;
-my($in1,$in2,$out,$cut,$help);
+my($in1,$in2,$cut,$help);
 GetOptions
 (
 	"1=s"=>\$in1,
 	"2=s"=>\$in2,
-	"o=s"=>\$out,
 	"c=i"=>\$cut,
 	"help|?"=>\$help
 );
@@ -15,13 +14,12 @@ my $usage=<<INFO;
 Usage:
 	perl $0	[options]
 Options:
-	-1 <file>	input heteroplasmic point variations recording file, sorted by loci
+	-1 <file>	input the merged point-variation.tsv file
 	-2 <file>	input .sam/.bam mapping file, should be sorted
-	-o <file>	output the ids of sequences and variations which containing
 	-c <int>	Phred quality score cutoff value of each base, defalut=20 
 INFO
 
-die $usage if ($help || !$in1 || !$in2 || !$out || !$cut);
+die $usage if ($help || !$in1 || !$in2  || !$cut);
 
 $cut=20 if !$cut;
 
@@ -43,7 +41,7 @@ else{
 	open IN2,"<$in2";
 }
 
-open OUT,">$out";
+open OUT,">id-variation.tsv";
 my @seq;
 my @qua;
 my @num;
