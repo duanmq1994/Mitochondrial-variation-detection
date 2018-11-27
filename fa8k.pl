@@ -1,24 +1,25 @@
 #!usr/perl/bin -w
 use strict;
 use Getopt::Long;
-my ($in,$out,$help);
+my ($in,$help);
 
 GetOptions(
 		"in=s"=>\$in,
-		"out=s"=>\$out,
 		"help|?"=>\$help,
 );
 
 my $usage=<<INFO;
 Usage:
 	perl $0 [options]
+
+	This script will creat a new .fasta file starting from the 8001 position of mitochondrial genome, to eliminate the influence on the head and tail reads because of a circular reference.
+
 Options:
 	-i <file>	input .fasta file of mitochondrial genome
-	-o <file>	output modified .fasta file which statrs from 8001
 INFO
-die $usage if ($help || !$in || !$out);
+die $usage if ($help || !$in);
 open IN,"<$in";
-open OUT,">$out";
+open OUT,">MT-8k.fasta";
 
 my @gene=();
 while(<IN>){
