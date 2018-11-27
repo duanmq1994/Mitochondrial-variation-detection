@@ -5,7 +5,7 @@ Use `$ git clone git@github.com:duanmq1994/Mitochondrial-variation-detection.git
      
 
 ### For the heteroplasmic variation detection
-This step suggests that the users align the sequencing data against two references( MT.fasta and **MT-8k.fatsa**) respectively.     
+This step suggests that the users align the sequencing data against two references(**MT.fasta** and **MT-8k.fatsa**) respectively.     
 Then the .bam/.sam files need to be kept and used in the following steps.     
 Or users can creat their own 8k.fasta files using the **fa8k.pl**.      
 This script will creat a new .fasta file of mitochondrial genome to eliminate the influence on the head and tail reads because of a circular reference.      
