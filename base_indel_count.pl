@@ -132,8 +132,8 @@ while(<IN>){
 		}
 }
 
-print OUT1 "pos\tref_allele\tnumber_of_ref_allele\t1st_alteration\tnumber_of_the_1st_alteration\t2nd_alteration\tnumber_of_the_2nd_alteration\t3rd_alteration\tnumber_of_the_3rd_alteration\tInsertion\tDeletion\tDepthi\tMAF\n";
-print OUT3 "pos\tref_allele\tnumber_of_ref_allele\t1st_alteration\tnumber_of_the_1st_alteration\t2nd_alteration\tnumber_of_the_2nd_alteration\t3rd_alteration\tnumber_of_the_3rd_alteration\tInsertion\tDeletion\tDepthi\tMAF\n" if $out3;
+print OUT1 "pos\tref_allele\tnumber_of_ref_allele\t1st_alteration\tnumber_of_the_1st_alteration\t2nd_alteration\tnumber_of_the_2nd_alteration\t3rd_alteration\tnumber_of_the_3rd_alteration\tInsertion\tDeletion\tDepth\tMAF\n";
+print OUT3 "pos\tref_allele\tnumber_of_ref_allele\t1st_alteration\tnumber_of_the_1st_alteration\t2nd_alteration\tnumber_of_the_2nd_alteration\t3rd_alteration\tnumber_of_the_3rd_alteration\tInsertion\tDeletion\tDepth\tMAF\n" if $out3;
 for(my$i=1;$i<=$glen;$i++){
 	print OUT1 "$i\t";
 	my %hash=(
