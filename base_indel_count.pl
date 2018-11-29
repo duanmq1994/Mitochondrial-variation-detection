@@ -140,7 +140,7 @@ for(my$i=1;$i<=$glen;$i++){
 	);
 	my $depth=0;
 	my @key=sort{$hash{$b} <=> $hash{$a}}keys%hash;
-	my $minor_base=$key[2];
+	my $minor_base=$key[1];
 	my $minor_depth=$hash{$minor_base};
 	for (@key){
 			print OUT1 "$_\t$hash{$_}\t";
