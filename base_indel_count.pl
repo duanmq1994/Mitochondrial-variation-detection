@@ -14,7 +14,7 @@ my $usage=<<INFO;
 Usage:
 	perl $0	[options]
 
-	This script will read the .bam/.sam file and output the base-count.tsv, indel-count.tsv and point-variations.tsv(alternative).
+	This script will read the .bam/.sam file and output the base-count.tsv and indel-count.tsv.
 Options:
 	-i <file>	input .bam/.sam file after sort
 	-c <int>	Phred quality value cutoff of every base, default=20
