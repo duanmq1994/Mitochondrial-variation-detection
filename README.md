@@ -19,7 +19,7 @@ This script will read the .bam/.sam file (use normal reference and 8k reference 
 ### For the linkage detection     
 This step also needs users to creat the following results files using .bam/.sam files from two reference.
 
-- Use the **indel_base_link.pl**.
+- Use the **sequences_of_linkages.pl**.
 This script will use the .bam/.sam file which aligned against two reference from *heteroplasmic variation detection* step. It will creat a primary **id-variation.tsv** file (intermediate result, should be sorted by *sequence_id* row).     
 - Use the **variations_merge.pl** to get the **linkages-count.tsv** file.      
 - Use the **linkage_classify.pl**.    
