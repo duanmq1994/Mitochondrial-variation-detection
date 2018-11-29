@@ -10,8 +10,8 @@ Then the .bam/.sam files need to be kept and used in the following steps.
 Or users can creat their own 8k.fasta files using the **fa8k.pl**.      
 This script will creat a new .fasta file of mitochondrial genome to eliminate the influence on the head and tail reads because of a circular reference.      
 
-- Use the base_indel_count.pl.      
-This script will read the .bam/.sam file (use normal reference and 8k reference respectively) which has been sorted by SAMtools, then output three file: **base-count.tsv**, **indel-count.tsv** and **point-variation.tsv(alternative)**.
+- Use the **base_indel_count.pl**.      
+This script will read the .bam/.sam file (use normal reference and 8k reference respectively) which has been sorted by SAMtools, then output two files: **base-count.tsv** and **indel-count.tsv**.
 
 - Use the **1_8k_merge.pl** to merge those two sets of .tsv files.
 
