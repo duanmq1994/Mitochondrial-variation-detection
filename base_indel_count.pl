@@ -147,7 +147,8 @@ for(my$i=1;$i<=$glen;$i++){
 			$depth+=$hash{$_};
 	}
 	$depth+=$count[$i]->[6];
-	my $MAF=sprintf "%.2f",($minor_depth/$depth);
+	my $MAF=sprintf "%.2f",($minor_depth*100/$depth);
+	$MAF=$MAF."%";
 	my $insertion=$count[$i]->[5];
 	my $deletion=$count[$i]->[6];
 	print OUT1 "$insertion\t$deletion\t$depth\t$MAF\n";	
