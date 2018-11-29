@@ -2,13 +2,11 @@
 #count the base-type and indel-type file together
 use Getopt::Long;
 use strict;
-my($in,$out3,$cut,$HF,$glen,$help);
+my($in,$cut,$glen,$help);
 GetOptions
 (
 	"i=s"=>\$in,
-	"ov=s"=>\$out3,
 	"c=i"=>\$cut,
-	"HF=f"=>\$HF,
 	"g=i"=>\$glen,
 	"help|?"=>\$help
 );
@@ -20,9 +18,7 @@ Usage:
 Options:
 	-i <file>	input .bam/.sam file after sort
 	-c <int>	Phred quality value cutoff of every base, default=20
-	-HF <float>	the threshold value of MAF(minor allele frequency), defalut with no threshold
-	-ov <file>	output the heteroplasmic point variations according to the -HF parament, default no output
-	-g <int>	length of mitochondrial genome
+	-g <int>	length of mitochondrial genome, depending on the length of reference
 INFO
 
 die $usage if ($help || !$in || !$glen);
@@ -133,7 +129,7 @@ while(<IN>){
 }
 
 print OUT1 "pos\tref_allele\tnumber_of_ref_allele\t1st_alteration\tnumber_of_the_1st_alteration\t2nd_alteration\tnumber_of_the_2nd_alteration\t3rd_alteration\tnumber_of_the_3rd_alteration\tInsertion\tDeletion\tDepth\tMAF\n";
-print OUT3 "pos\tref_allele\tnumber_of_ref_allele\t1st_alteration\tnumber_of_the_1st_alteration\t2nd_alteration\tnumber_of_the_2nd_alteration\t3rd_alteration\tnumber_of_the_3rd_alteration\tInsertion\tDeletion\tDepth\tMAF\n" if $out3;
+
 for(my$i=1;$i<=$glen;$i++){
 	print OUT1 "$i\t";
 	my %hash=(
@@ -148,15 +144,13 @@ for(my$i=1;$i<=$glen;$i++){
 	my $minor_depth=$hash{$minor_base};
 	for (@key){
 			print OUT1 "$_\t$hash{$_}\t";
-			print OUT3 "$_\t$hash{$_}\t" if $out3;
 			$depth+=$hash{$_};
 	}
 	$depth+=$count[$i]->[6];
 	my $MAF=sprintf "%.2f",($minor_depth/$depth);
 	my $insertion=$count[$i]->[5];
 	my $deletion=$count[$i]->[6];
-	print OUT1 "$insertion\t$deletion\t$depth\t$MAF\n";
-	print OUT3 "$insertion\t$deletion\t$depth\t$MAF\n" if $out3 and $MAF >= $HF;		
+	print OUT1 "$insertion\t$deletion\t$depth\t$MAF\n";	
 }
 
 my @indels=keys%indelcount;
@@ -167,4 +161,3 @@ for my$indel (@indels){
 close IN;
 close OUT2;
 close OUT1;
-close OUT3 if $out3;
