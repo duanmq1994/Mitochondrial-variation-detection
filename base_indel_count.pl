@@ -129,7 +129,6 @@ while(<IN>){
 }
 
 print OUT1 "pos\tref_allele\tnumber_of_ref_allele\t1st_alteration\tnumber_of_the_1st_alteration\t2nd_alteration\tnumber_of_the_2nd_alteration\t3rd_alteration\tnumber_of_the_3rd_alteration\tInsertion\tDeletion\tDepth\tMAF\n";
-
 for(my$i=1;$i<=$glen;$i++){
 	print OUT1 "$i\t";
 	my %hash=(
@@ -154,6 +153,7 @@ for(my$i=1;$i<=$glen;$i++){
 	print OUT1 "$insertion\t$deletion\t$depth\t$MAF\n";	
 }
 
+print OUT2 "numbers_of_indels\tindels\n";
 my @indels=keys%indelcount;
 for my$indel (@indels){
 	print OUT2 "$indelcount{$indel}\t$indel\n";
