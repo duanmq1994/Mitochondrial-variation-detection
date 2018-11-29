@@ -32,7 +32,7 @@ open OUT,">$out";
 open IN1,"<$in1";
 while(<IN1>){
 	chomp;
-	next if $_ =~ "pos";
+	next if $_ =~ "number";
 	my @temp1=split/\s+/,$_;
 	if($temp1[$row] =~ /([0-9]+)/){
 		if($1 >= 4001 and $1 <= 12000){
@@ -45,7 +45,7 @@ close IN1;
 open IN2,"<$in2";
 while(<IN2>){
 	chomp;
-	next if $_ =~ "pos";
+	next if $_ =~ "number";
 	my @temp2=split/\s+/,$_;
 	my $s=0;
 	my $line;
