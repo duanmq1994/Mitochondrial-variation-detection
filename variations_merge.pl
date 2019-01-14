@@ -2,7 +2,7 @@
 #output all the reads containing one or more hetero-loci(s)
 use strict;
 use Getopt::Long;
-my ($in,$help);
+my ($in,$help,$out);
 
 GetOptions(
 	"i=s"=>\$in,
