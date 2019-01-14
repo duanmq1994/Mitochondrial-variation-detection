@@ -42,7 +42,7 @@ while(<IN>){
 	my @snp_temp=();
 	my $ind=0;
 	my $snp=0;
-	for($i=1;$i<=$#temp;$i++){
+	for(my $i=1;$i<=$#temp;$i++){
 		if($temp[$i] =~ /\_/){
 			$ind++;
 			push(@indel_temp,$temp[$i]);
@@ -65,12 +65,12 @@ while(<IN>){
 	}
 }
 
-foreach $indel_links(keys %indel_link){
+foreach my $indel_links(keys %indel_link){
 	my $link_num=$indel_link{$indel_links};
 	print OUT1 "$link_num\t$indel_links\n";
 }
 
-foreach $snp_links(keys %snp_link){
+foreach my $snp_links(keys %snp_link){
 	my $snp_lnum=$snp_link{$snp_links};
 	print OUT3 "$snp_lnum\t$snp_links\n";
 }
