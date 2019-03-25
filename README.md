@@ -1,5 +1,6 @@
 # Mitochondrial-variation-detection
-Scripts used in article 'A simple pipeline for heteroplasmic variation detection of the mitochondrial genome from whole genome sequencing data'
+Scripts used in article 'Evaluating heteroplasmic variations of the mitochondrial genome from whole genome sequencing data'
+DOI: 10.1016/j.gene.2019.03.016
 
 Use `$ git clone git@github.com:duanmq1994/Mitochondrial-variation-detection.git` download those source codes or directly download the ZIP.
      
